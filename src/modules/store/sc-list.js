@@ -1,4 +1,4 @@
-import { decorate, observable, action } from "mobx";
+import { decorate, observable, action, computed } from "mobx";
 import SCItem from "./sc-item";
 
 class SCList {
@@ -15,10 +15,15 @@ class SCList {
   remove(item) {
     this.list.splice(this.list.indexOf(item), 1);
   }
+
+  getTotalPrice() {
+    return this.list.reduce((acc, item) => acc + item.getTotalPrice(), 0);
+  }
 }
 
 export default decorate(SCList, {
   list: observable,
   add: action,
-  remove: action
+  remove: action,
+  getTotalPrice: computed
 });
