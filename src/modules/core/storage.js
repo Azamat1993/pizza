@@ -1,11 +1,49 @@
 const keyPrefix = "pizza-shop";
 
 class Storage {
-  getItem(key) {}
+  getItem(key) {
+    try {
+      const data = localStorage.getItem(this.generateKey(key));
 
-  setItem(key, value) {}
+      if (data) {
+        return this.deserialize(data);
+      }
 
-  removeItem(key) {}
+      return null;
+    } catch (e) {
+      console.warn(`Error while getting item from storage with key: ${key}`);
+    }
+  }
+
+  setItem(key, value) {
+    try {
+      localStorage(this.generateKey(key), this.serialize(value));
+    } catch (e) {
+      console.warn(
+        `Error while setting item: ${value} with key: ${key} to storage`
+      );
+    }
+  }
+
+  removeItem(key) {
+    try {
+      localStorage.removeItem(this.generateKey(key));
+    } catch (e) {
+      console.warn(`Error while removing item from storage with key: ${key}`);
+    }
+  }
+
+  generateKey(partialKey) {
+    return `${keyPrefix}_${partialKey}`;
+  }
+
+  deserialize(data) {
+    return JSON.parse(data);
+  }
+
+  serialize(data) {
+    return JSON.stringify(data);
+  }
 }
 
 export const storage = new Storage();
