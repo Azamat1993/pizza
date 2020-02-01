@@ -10,7 +10,7 @@ const Root = () => {
   return (
     <Grid container direction="column">
       <Typography variant="h2">Shopping cart summary</Typography>
-      <List items={scStore.content.list} />
+      <List list={scStore.list} />
     </Grid>
   );
 };

@@ -14,7 +14,7 @@ class SC {
   currency = defaultCurrency;
 
   constructor(items = [], deliveryCost = 100) {
-    this.content = new SCList(items);
+    this.list = new SCList(items);
     this.deliveryCost = deliveryCost;
   }
 
