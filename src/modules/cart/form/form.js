@@ -11,8 +11,9 @@ import {
 } from "@material-ui/core";
 import { Overview } from "modules/cart/overview";
 import { Address } from "modules/cart/address";
+import { PaymentDetails } from "modules/cart/payment-details";
 
-const steps = ["Shipping address", "Payment details", "Review your order"];
+const steps = ["Review your order", "Shipping address", "Payment details"];
 
 const getStepContent = step => {
   switch (step) {
@@ -20,8 +21,10 @@ const getStepContent = step => {
       return <Overview />;
     case 1:
       return <Address />;
+    case 2:
+      return <PaymentDetails />;
     default:
-    // throw new Error("Unknown step");
+      throw new Error("Unknown step");
   }
 };
 
