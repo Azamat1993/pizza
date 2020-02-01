@@ -1,6 +1,7 @@
 import { decorate, observable, action, computed } from "mobx";
 import SCList from "./sc-list";
 
+// by default all items are represented by USD currency
 const defaultCurrency = "USD";
 
 const currencyFactors = {
