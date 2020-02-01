@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Typography, ListItem, ListItemText } from "@material-ui/core";
+import { useObserver } from "mobx-react";
 
 import { StoreContext } from "modules/context/sc-context";
 import { List } from "modules/cart/list";
@@ -16,7 +17,7 @@ export const Overview = () => {
     return `${currencyToSymbol[store.currency]}${store.totalPrice}`;
   };
 
-  return (
+  return useObserver(() =>
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Order overview
