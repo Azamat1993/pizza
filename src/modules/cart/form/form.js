@@ -13,16 +13,16 @@ import { Overview } from "modules/cart/overview";
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 
-const getStepContent = (step, store) => {
+const getStepContent = step => {
   switch (step) {
     case 0:
-      return <Overview list={store.list} />;
+      return <Overview />;
     default:
     // throw new Error("Unknown step");
   }
 };
 
-export const Form = ({ store }) => {
+export const Form = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
 
@@ -50,7 +50,7 @@ export const Form = ({ store }) => {
           )}
         </Stepper>
         <React.Fragment>
-          {getStepContent(activeStep, store)}
+          {getStepContent(activeStep)}
           <div className={classes.buttons}>
             {activeStep !== 0 &&
               <Button onClick={handleBack} className={classes.button}>

@@ -1,7 +1,7 @@
 import { decorate, observable, action, computed } from "mobx";
 
 class SCItem {
-  quantity = 0;
+  quantity = 1;
 
   constructor({ price, title }) {
     this.price = price || 0;

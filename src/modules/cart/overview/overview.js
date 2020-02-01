@@ -1,15 +1,33 @@
-import React from "react";
-import { Typography } from "@material-ui/core";
+import React, { useContext } from "react";
+import { Typography, ListItem, ListItemText } from "@material-ui/core";
 
+import { StoreContext } from "modules/context/sc-context";
 import { List } from "modules/cart/list";
 
-export const Overview = ({ list }) => {
+const currencyToSymbol = {
+  USD: "$",
+  EUR: "€"
+};
+
+export const Overview = () => {
+  const store = useContext(StoreContext);
+
+  const getTotalPrice = () => {
+    return `${currencyToSymbol[store.currency]}${store.totalPrice}`;
+  };
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Order overview
       </Typography>
-      <List list={list} />
+      <List />
+      <ListItem>
+        <ListItemText primary="Total" />
+        <Typography variant="subtitle1">
+          {getTotalPrice()}
+        </Typography>
+      </ListItem>
     </React.Fragment>
   );
 };
