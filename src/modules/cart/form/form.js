@@ -9,17 +9,20 @@ import {
   StepLabel,
   Button
 } from "@material-ui/core";
+import { Overview } from "modules/cart/overview";
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 
-const getStepContent = step => {
+const getStepContent = (step, store) => {
   switch (step) {
+    case 0:
+      return <Overview list={store.list} />;
     default:
     // throw new Error("Unknown step");
   }
 };
 
-export const Form = () => {
+export const Form = ({ store }) => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
 
@@ -47,6 +50,7 @@ export const Form = () => {
           )}
         </Stepper>
         <React.Fragment>
+          {getStepContent(activeStep, store)}
           <div className={classes.buttons}>
             {activeStep !== 0 &&
               <Button onClick={handleBack} className={classes.button}>

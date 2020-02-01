@@ -6,14 +6,10 @@ import { List } from "modules/cart/list";
 import { Form } from "modules/cart/form";
 
 const Root = () => {
-  const scStore = useContext(StoreContext);
-
+  const store = useContext(StoreContext);
   return (
     <Grid container direction="column">
-      <Typography variant="h2">Shopping cart summary</Typography>
-      <List list={scStore.list} />
-
-      <Form />
+      <Form store={store} />
     </Grid>
   );
 };
