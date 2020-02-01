@@ -16,8 +16,8 @@ class SCList {
     this.list.splice(this.list.indexOf(item), 1);
   }
 
-  getTotalPrice() {
-    return this.list.reduce((acc, item) => acc + item.getTotalPrice(), 0);
+  get totalPrice() {
+    return this.list.reduce((acc, item) => acc + item.totalPrice, 0);
   }
 }
 

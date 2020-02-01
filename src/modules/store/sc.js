@@ -28,9 +28,9 @@ class SC {
     }
   }
 
-  getTotalPrice() {
+  get totalPrice() {
     // get total price of cart in usd without delivery
-    let totalPrice = this.list.getTotalPrice();
+    let totalPrice = this.list.totalPrice;
 
     // adding delivery cost, if applied
     if (this.withDelivery) {
