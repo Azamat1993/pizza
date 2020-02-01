@@ -4,12 +4,12 @@ import { useStore } from "modules/context/sc-context";
 import { Item } from "./item";
 
 export const List = items => {
-  const scList = useStore();
+  const store = useStore();
 
   return (
     <div>
-      {scList.forEach(scItem => {
-        return <Item item={scItem} />;
+      {store.list.forEach((item, index) => {
+        return <Item key={index} item={item} />;
       })}
     </div>
   );
