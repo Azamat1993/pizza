@@ -1,15 +1,16 @@
-import React from "react";
-import { Grid } from "@material-ui/core";
+import React, { useContext } from "react";
+import { Grid, Typography } from "@material-ui/core";
 
-import { useStore } from "modules/context/sc-context";
+import { StoreContext } from "modules/context/sc-context";
 import { List } from "modules/cart/list";
 
 const Root = () => {
-  const scStore = useStore();
+  const scStore = useContext(StoreContext);
 
   return (
     <Grid container direction="column">
-      <List items={scStore.list} />
+      <Typography variant="h2">Shopping cart summary</Typography>
+      <List items={scStore.content.list} />
     </Grid>
   );
 };

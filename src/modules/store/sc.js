@@ -14,7 +14,7 @@ class SC {
   currency = defaultCurrency;
 
   constructor(items = [], deliveryCost = 100) {
-    this.list = new SCList(items);
+    this.content = new SCList(items);
     this.deliveryCost = deliveryCost;
   }
 
@@ -51,5 +51,5 @@ export default decorate(SC, {
   setWithDelivery: action,
   setCurrency: action,
 
-  getTotalPrice: computed
+  totalPrice: computed
 });

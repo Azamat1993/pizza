@@ -25,5 +25,5 @@ export default decorate(SCList, {
   list: observable,
   add: action,
   remove: action,
-  getTotalPrice: computed
+  totalPrice: computed
 });

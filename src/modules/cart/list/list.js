@@ -1,14 +1,15 @@
 import React, { memo } from "react";
-import { List } from "@material-ui/core";
+import { List as MaterialList } from "@material-ui/core";
 
 import { Item } from "modules/cart/item";
 
-export const List = memo(items => {
+export const List = memo(({ items }) => {
+  console.log(items);
   return (
-    <div>
-      {items.forEach((item, index) => {
+    <MaterialList>
+      {items.map((item, index) => {
         return <Item key={index} item={item} />;
       })}
-    </div>
+    </MaterialList>
   );
 });
