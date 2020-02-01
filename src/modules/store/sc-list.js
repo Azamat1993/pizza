@@ -4,16 +4,16 @@ import SCItem from "./sc-item";
 class SCList {
   list = [];
 
-  constructor(scItems) {
-    scItems.forEach(this.add.bind(this));
+  constructor(items) {
+    items.forEach(this.add.bind(this));
   }
 
-  add(scItem) {
-    this.list.push(new SCItem(scItem));
+  add(item) {
+    this.list.push(new SCItem(item));
   }
 
-  remove(scItem) {
-    this.list.splice(this.list.indexOf(scItem), 1);
+  remove(item) {
+    this.list.splice(this.list.indexOf(item), 1);
   }
 }
 
