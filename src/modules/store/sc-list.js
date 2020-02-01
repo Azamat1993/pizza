@@ -5,16 +5,16 @@ class SCList {
   items = [];
 
   constructor(items) {
-    items.forEach(this.add.bind(this));
+    items.forEach(this.add);
   }
 
-  add(item) {
+  add = item => {
     this.items.push(new SCItem(item));
-  }
+  };
 
-  remove(item) {
+  remove = item => {
     this.items.splice(this.items.indexOf(item), 1);
-  }
+  };
 
   get totalPrice() {
     return this.items.reduce((acc, item) => acc + item.totalPrice, 0);

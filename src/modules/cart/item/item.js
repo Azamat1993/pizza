@@ -10,7 +10,7 @@ import {
 import ImageIcon from "@material-ui/icons/Image";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-export const Item = memo(item => {
+export const Item = memo(({ item, removeItem }) => {
   return (
     <ListItem>
       <ListItemAvatar>
@@ -24,7 +24,7 @@ export const Item = memo(item => {
       />
 
       <ListItemSecondaryAction>
-        <IconButton edge="end" aria-label="delete">
+        <IconButton onClick={removeItem} edge="end" aria-label="delete">
           <DeleteIcon />
         </IconButton>
       </ListItemSecondaryAction>
