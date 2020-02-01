@@ -1,16 +1,13 @@
-import React from "react";
+import React, { memo } from "react";
 
-import { useStore } from "modules/context/sc-context";
 import { Item } from "modules/cart/item";
 
-export const List = items => {
-  const store = useStore();
-
+export const List = memo(items => {
   return (
     <div>
-      {store.list.forEach((item, index) => {
+      {items.forEach((item, index) => {
         return <Item key={index} item={item} />;
       })}
     </div>
   );
-};
+});
