@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useStore } from "modules/context/sc-context";
-import { Item } from "./item";
+import { Item } from "modules/cart/item";
 
 export const List = items => {
   const store = useStore();
