@@ -21,11 +21,9 @@ export const useStyles = makeStyles(theme => ({
     padding: theme.spacing(3, 0, 5)
   },
   buttons: {
-    display: "flex",
-    justifyContent: "flex-end"
+    marginTop: theme.spacing(3)
   },
   button: {
-    marginTop: theme.spacing(3),
     marginLeft: theme.spacing(1)
   }
 }));

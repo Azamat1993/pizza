@@ -7,7 +7,8 @@ import {
   Stepper,
   Step,
   StepLabel,
-  Button
+  Button,
+  Grid
 } from "@material-ui/core";
 import { Overview } from "modules/cart/overview";
 import { Address } from "modules/cart/address";
@@ -57,20 +58,29 @@ export const Form = () => {
         </Stepper>
         <React.Fragment>
           {getStepContent(activeStep)}
-          <div className={classes.buttons}>
-            {activeStep !== 0 &&
-              <Button onClick={handleBack} className={classes.button}>
-                Back
-              </Button>}
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleNext}
-              className={classes.button}
-            >
-              {activeStep === steps.length - 1 ? "Place order" : "Next"}
-            </Button>
-          </div>
+          <Grid
+            className={classes.buttons}
+            container
+            wrap="nowrap"
+            justify="space-between"
+          >
+            <Button>Close</Button>
+
+            <Grid item container justify="flex-end">
+              {activeStep !== 0 &&
+                <Button onClick={handleBack} className={classes.button}>
+                  Back
+                </Button>}
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleNext}
+                className={classes.button}
+              >
+                {activeStep === steps.length - 1 ? "Place order" : "Next"}
+              </Button>
+            </Grid>
+          </Grid>
         </React.Fragment>
       </Paper>
     </main>
