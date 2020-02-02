@@ -15,12 +15,15 @@ export const Toolbar = () => {
   const classes = useStyles();
   const store = useContext(StoreContext);
 
+  const onClickCart = () => {};
+
   return useObserver(() =>
     <MuiToolbar>
       <Typography className={classes.title} variant="h6">
         Pizza shop
       </Typography>
       <IconButton
+        onClick={onClickCart}
         aria-label={`show ${store.list.items.length} shopping cart items`}
         color="inherit"
       >
