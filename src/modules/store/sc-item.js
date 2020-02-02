@@ -1,7 +1,9 @@
 import { decorate, observable, action, computed } from "mobx";
 
+const minQuantity = 1;
+
 class SCItem {
-  quantity = 1;
+  quantity = minQuantity;
 
   constructor({ price, title }) {
     this.price = price || 0;
@@ -13,7 +15,7 @@ class SCItem {
   }
 
   decrementQuantity() {
-    if (this.quantity > 0) {
+    if (this.quantity > minQuantity) {
       this.quantity--;
     }
   }
