@@ -9,7 +9,7 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { useObserver } from "mobx-react";
 
 import { StoreContext } from "modules/context/sc-context";
-import { useStyles } from "modules/home/toolbar/style";
+import { useStyles } from "./style";
 
 export const Toolbar = () => {
   const classes = useStyles();

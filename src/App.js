@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AppBar } from "@material-ui/core";
 
-import { Toolbar } from "modules/home/toolbar";
+import { Toolbar } from "modules/shared/toolbar";
 import SCStore from "modules/store/sc";
 import { StoreProvider } from "modules/context/sc-context";
 import Home from "modules/home";
