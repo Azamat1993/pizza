@@ -9,9 +9,10 @@ import {
 } from "@material-ui/core";
 import ImageIcon from "@material-ui/icons/Image";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { useObserver } from "mobx-react";
 
 export const Item = memo(({ item, removeItem }) => {
-  return (
+  return useObserver(() =>
     <ListItem>
       <ListItemAvatar>
         <Avatar>
@@ -20,7 +21,7 @@ export const Item = memo(({ item, removeItem }) => {
       </ListItemAvatar>
       <ListItemText
         primary={item.title}
-        secondary={`total price: ${item.totalPrice}`}
+        secondary={`total price: ${item.totalPriceWithCurrency}`}
       />
 
       <ListItemSecondaryAction>

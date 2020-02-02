@@ -13,21 +13,12 @@ import { useObserver } from "mobx-react";
 import { StoreContext } from "modules/context/sc-context";
 import { List } from "modules/cart/list";
 
-const currencyToSymbol = {
-  USD: "$",
-  EUR: "€"
-};
-
 export const Overview = () => {
   const store = useContext(StoreContext);
 
-  const getTotalPrice = () => {
-    return `${currencyToSymbol[store.currency]}${store.totalPrice}`;
-  };
+  const handleCurrencyChange = e => store.currency.setCurrent(e.target.value);
 
-  const handleCurrencyChange = e => {
-    store.setCurrency(e.target.value);
-  };
+  console.log(store.currency.current);
 
   return useObserver(() =>
     <React.Fragment>
@@ -38,7 +29,7 @@ export const Overview = () => {
         <RadioGroup
           aria-label="position"
           name="position"
-          value={store.currency}
+          value={store.currency.current.name}
           onChange={handleCurrencyChange}
           row
         >
@@ -60,7 +51,7 @@ export const Overview = () => {
       <ListItem>
         <ListItemText primary="Total" />
         <Typography variant="subtitle1">
-          {getTotalPrice()}
+          {store.totalPriceWithCurrency}
         </Typography>
       </ListItem>
     </React.Fragment>

@@ -1,31 +1,20 @@
 import { decorate, observable, action, computed } from "mobx";
+
 import SCList from "./sc-list";
-
-// by default all items are represented by USD currency
-const defaultCurrency = "USD";
-
-const currencyFactors = {
-  USD: 1,
-  EUR: 1 / 1.11
-};
+import Currency from "./currency";
 
 class SC {
   withDelivery = false;
-  currency = defaultCurrency;
 
   constructor(items = [], deliveryCost = 100) {
-    this.list = new SCList(items);
+    this.currency = new Currency();
+
+    this.list = new SCList(items, this.currency);
     this.deliveryCost = deliveryCost;
   }
 
   setWithDelivery(withDelivery) {
     this.withDelivery = withDelivery;
-  }
-
-  setCurrency(currency = defaultCurrency) {
-    if (currencyFactors[currency]) {
-      this.currency = currency;
-    }
   }
 
   get totalPrice() {
@@ -37,10 +26,11 @@ class SC {
       totalPrice += this.deliveryCost;
     }
 
-    // applying currency
-    totalPrice *= currencyFactors[this.currency];
+    return totalPrice;
+  }
 
-    return totalPrice.toFixed(2);
+  get totalPriceWithCurrency() {
+    return `${this.currency.current.symbol}${this.totalPrice.toFixed(2)}`;
   }
 }
 
@@ -49,7 +39,7 @@ export default decorate(SC, {
   currency: observable,
 
   setWithDelivery: action,
-  setCurrency: action,
 
-  totalPrice: computed
+  totalPrice: computed,
+  totalPriceWithCurrency: computed
 });

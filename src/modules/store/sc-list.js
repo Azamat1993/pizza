@@ -4,7 +4,9 @@ import SCItem from "./sc-item";
 class SCList {
   items = [];
 
-  constructor(items) {
+  constructor(items, currency) {
+    this.currency = currency;
+
     items.forEach(this.add);
   }
 
@@ -14,7 +16,7 @@ class SCList {
     if (existingItem) {
       existingItem.incrementQuantity();
     } else {
-      this.items.push(new SCItem(item));
+      this.items.push(new SCItem(item, this.currency));
     }
   };
 
