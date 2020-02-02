@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, memo } from "react";
 import {
   Toolbar as MuiToolbar,
   Typography,
@@ -13,7 +13,7 @@ import { StoreContext } from "modules/context/sc-context";
 import { SCManagerContext } from "modules/context/sc-manager-context";
 import { useStyles } from "./style";
 
-export const Toolbar = () => {
+export const Toolbar = memo(() => {
   const classes = useStyles();
   const store = useContext(StoreContext);
   const managerStore = useContext(SCManagerContext);
@@ -36,4 +36,4 @@ export const Toolbar = () => {
       </MuiToolbar>
     </AppBar>
   );
-};
+});

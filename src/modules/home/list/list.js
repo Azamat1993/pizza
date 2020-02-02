@@ -4,7 +4,7 @@ import { Grid, Paper } from "@material-ui/core";
 
 import { Item } from "modules/home/item";
 
-export const List = ({ items }) => {
+export const List = memo(({ items }) => {
   return (
     <Grid container spacing={3}>
       {items.map(item => {
@@ -18,7 +18,7 @@ export const List = ({ items }) => {
       })}
     </Grid>
   );
-};
+});
 
 List.propTypes = {
   items: PropTypes.array

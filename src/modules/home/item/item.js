@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, memo } from "react";
 import {
   Card,
   IconButton,
@@ -13,7 +13,7 @@ import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import { StoreContext } from "modules/context/sc-context";
 import { useStyles } from "./style";
 
-export const Item = ({ item }) => {
+export const Item = memo(({ item }) => {
   const classes = useStyles();
   const store = useContext(StoreContext);
 
@@ -43,4 +43,4 @@ export const Item = ({ item }) => {
       </CardContent>
     </Card>
   );
-};
+});
