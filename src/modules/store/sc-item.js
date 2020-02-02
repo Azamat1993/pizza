@@ -24,6 +24,12 @@ class SCItem {
     }
   };
 
+  setQuantity = (quantity = 1) => {
+    if (quantity >= 1 && quantity <= 100) {
+      this.quantity = quantity;
+    }
+  };
+
   get totalPrice() {
     return this.quantity * this.price * this.currency.current.factor;
   }
@@ -38,6 +44,7 @@ export default decorate(SCItem, {
 
   incrementQuantity: action,
   decrementQuantity: action,
+  setQuantity: action,
 
   totalPrice: computed,
   totalPriceWithCurrency: computed

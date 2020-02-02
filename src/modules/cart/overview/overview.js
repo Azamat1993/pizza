@@ -18,6 +18,13 @@ export const Overview = () => {
 
   const handleCurrencyChange = e => store.currency.setCurrent(e.target.value);
 
+  const secondaryText = () => {
+    if (store.withShipping) {
+      return "*Price with shipping. To change shipping settings, click next";
+    }
+    return null;
+  };
+
   return useObserver(() =>
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -48,7 +55,7 @@ export const Overview = () => {
       </ListItem>
       <List />
       <ListItem disableGutters>
-        <ListItemText primary="Total" />
+        <ListItemText primary="Total" secondary={secondaryText()} />
         <Typography variant="subtitle1">
           {store.totalPriceWithCurrency}
         </Typography>
