@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardMedia
 } from "@material-ui/core";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 
 import { useStyles } from "./style";
 
@@ -20,7 +20,7 @@ export const Item = ({ item }) => {
       <CardHeader
         action={
           <IconButton aria-label="settings">
-            <FavoriteIcon />
+            <AddShoppingCartIcon />
           </IconButton>
         }
         title={item.title}
@@ -37,11 +37,6 @@ export const Item = ({ item }) => {
           {item.description}
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-      </CardActions>
     </Card>
   );
 };
