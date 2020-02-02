@@ -1,16 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Grid } from "@material-ui/core";
+import { Grid, Paper } from "@material-ui/core";
 
 import { Item } from "modules/home/item";
 
 export const List = ({ items }) => {
   return (
-    <Grid container xs={12}>
+    <Grid container spacing={3}>
       {items.map(item => {
         return (
-          <Grid key={item.id} item>
-            <Item item={item} />
+          <Grid xs={3} key={item.id} item>
+            <Paper>
+              <Item item={item} />
+            </Paper>
           </Grid>
         );
       })}

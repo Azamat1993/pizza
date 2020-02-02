@@ -2,7 +2,7 @@ import React from "react";
 
 import { StoreProvider } from "modules/context/sc-context";
 import SCStore from "modules/store/sc";
-import SCRoot from "modules/cart";
+import Home from "modules/home";
 
 const store = new SCStore([
   {
@@ -18,7 +18,7 @@ const store = new SCStore([
 function App() {
   return (
     <StoreProvider value={store}>
-      <SCRoot />
+      <Home />
     </StoreProvider>
   );
 }

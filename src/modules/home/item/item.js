@@ -5,7 +5,8 @@ import {
   CardContent,
   Typography,
   CardActions,
-  CardHeader
+  CardHeader,
+  CardMedia
 } from "@material-ui/core";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
@@ -24,6 +25,13 @@ export const Item = ({ item }) => {
         }
         title={item.title}
       />
+
+      <CardMedia
+        className={classes.media}
+        image="/static/images/cards/paella.jpg"
+        title="Paella dish"
+      />
+
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {item.description}
