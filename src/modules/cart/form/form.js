@@ -21,14 +21,16 @@ import { useStyles } from "./style";
 
 const steps = ["Review your order", "Shipping address", "Payment details"];
 
-const getStepContent = step => {
+const getStepContent = (step, formValue, setFormValue) => {
   switch (step) {
     case 0:
       return <Overview />;
     case 1:
-      return <Address />;
+      return <Address formValue={formValue} setFormValue={setFormValue} />;
     case 2:
-      return <PaymentDetails />;
+      return (
+        <PaymentDetails formValue={formValue} setFormValue={setFormValue} />
+      );
     default:
       throw new Error("Unknown step");
   }
@@ -37,6 +39,7 @@ const getStepContent = step => {
 export const Form = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
+  const [formValue, setFormValue] = useState({});
   const managerStore = useContext(SCManagerContext);
   const store = useContext(StoreContext);
 
@@ -47,6 +50,12 @@ export const Form = () => {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
+  const onSetFormValue = e =>
+    setFormValue({
+      ...formValue,
+      [e.target.name]: e.target.value
+    });
 
   const getMainContent = () => {
     if (!store.list.items.length > 0) {
@@ -74,7 +83,7 @@ export const Form = () => {
       );
     }
 
-    return getStepContent(activeStep);
+    return getStepContent(activeStep, formValue, onSetFormValue);
   };
 
   return useObserver(() =>

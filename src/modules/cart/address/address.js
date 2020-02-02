@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, Grid, TextField } from "@material-ui/core";
 
-export const Address = () => {
+export const Address = ({ formValue, setFormValue }) => {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -16,6 +16,8 @@ export const Address = () => {
             label="First name"
             fullWidth
             autoComplete="fname"
+            onChange={setFormValue}
+            value={formValue.firstName || ""}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -26,6 +28,8 @@ export const Address = () => {
             label="Last name"
             fullWidth
             autoComplete="lname"
+            onChange={setFormValue}
+            value={formValue.lastName || ""}
           />
         </Grid>
         <Grid item xs={12}>
@@ -36,6 +40,8 @@ export const Address = () => {
             label="Address line 1"
             fullWidth
             autoComplete="billing address-line1"
+            onChange={setFormValue}
+            value={formValue.address1 || ""}
           />
         </Grid>
         <Grid item xs={12}>
@@ -45,6 +51,8 @@ export const Address = () => {
             label="Address line 2"
             fullWidth
             autoComplete="billing address-line2"
+            onChange={setFormValue}
+            value={formValue.address2 || ""}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -55,6 +63,8 @@ export const Address = () => {
             label="City"
             fullWidth
             autoComplete="billing address-level2"
+            onChange={setFormValue}
+            value={formValue.city || ""}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -63,6 +73,8 @@ export const Address = () => {
             name="state"
             label="State/Province/Region"
             fullWidth
+            onChange={setFormValue}
+            value={formValue.state || ""}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -73,6 +85,8 @@ export const Address = () => {
             label="Zip / Postal code"
             fullWidth
             autoComplete="billing postal-code"
+            onChange={setFormValue}
+            value={formValue.zip || ""}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -83,6 +97,8 @@ export const Address = () => {
             label="Country"
             fullWidth
             autoComplete="billing country"
+            onChange={setFormValue}
+            value={formValue.country || ""}
           />
         </Grid>
       </Grid>
