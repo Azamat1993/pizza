@@ -1,5 +1,13 @@
 import React, { useContext } from "react";
-import { Typography, ListItem, ListItemText } from "@material-ui/core";
+import {
+  Typography,
+  ListItem,
+  ListItemText,
+  Grid,
+  FormControlLabel,
+  Radio,
+  RadioGroup
+} from "@material-ui/core";
 import { useObserver } from "mobx-react";
 
 import { StoreContext } from "modules/context/sc-context";
@@ -17,11 +25,37 @@ export const Overview = () => {
     return `${currencyToSymbol[store.currency]}${store.totalPrice}`;
   };
 
+  const handleCurrencyChange = e => {
+    store.setCurrency(e.target.value);
+  };
+
   return useObserver(() =>
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Order overview
-      </Typography>
+      <Grid container wrap="nowrap" alignItems="center" justify="space-between">
+        <Typography variant="h6" gutterBottom>
+          Order overview
+        </Typography>
+        <RadioGroup
+          aria-label="position"
+          name="position"
+          value={store.currency}
+          onChange={handleCurrencyChange}
+          row
+        >
+          <FormControlLabel
+            value="USD"
+            control={<Radio color="primary" />}
+            label="USD"
+            labelPlacement="end"
+          />
+          <FormControlLabel
+            value="EUR"
+            control={<Radio color="primary" />}
+            label="EUR"
+            labelPlacement="end"
+          />
+        </RadioGroup>
+      </Grid>
       <List />
       <ListItem>
         <ListItemText primary="Total" />

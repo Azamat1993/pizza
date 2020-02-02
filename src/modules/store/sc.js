@@ -6,7 +6,7 @@ const defaultCurrency = "USD";
 
 const currencyFactors = {
   USD: 1,
-  EUR: 1.11
+  EUR: 1 / 1.11
 };
 
 class SC {
@@ -40,7 +40,7 @@ class SC {
     // applying currency
     totalPrice *= currencyFactors[this.currency];
 
-    return totalPrice;
+    return totalPrice.toFixed(2);
   }
 }
 
