@@ -39,7 +39,7 @@ class SC {
 
   get shippingCostWithCurrency() {
     const cost = this.currency.current.factor * this.shippingCost;
-    return `${this.currency.current.symbol}${cost}`;
+    return `${this.currency.current.symbol}${cost.toFixed(2)}`;
   }
 }
 
