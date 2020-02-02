@@ -21,6 +21,10 @@ class SC {
     this.withShipping = !this.withShipping;
   };
 
+  reset = () => {
+    this.list.reset();
+  };
+
   get totalPrice() {
     // get total price of cart in usd without delivery
     let totalPrice = this.list.totalPrice;
@@ -49,6 +53,7 @@ export default decorate(SC, {
 
   setWithShipping: action,
   toggleWithShipping: action,
+  reset: action,
 
   totalPrice: computed,
   totalPriceWithCurrency: computed,

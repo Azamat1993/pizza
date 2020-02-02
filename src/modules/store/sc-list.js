@@ -10,6 +10,10 @@ class SCList {
     items.forEach(this.add);
   }
 
+  reset = () => {
+    this.items = [];
+  };
+
   add = item => {
     let existingItem = this.items.find(eItem => eItem.id === item.id);
 
