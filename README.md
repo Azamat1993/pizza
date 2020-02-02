@@ -1,5 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Basic info about the project
+
+For state management is used Mobx. Link to Mobx: https://mobx.js.org/README.html
+Different parts of app separated by folders, for example cart - in modules/cart folder.
+For design used material-ui. Link: https://material-ui.com/
+For simplicity and because of lack of time, used local data storage (json objects) inside of data folder
+
 ## Available Scripts
 
 In the project directory, you can run:
