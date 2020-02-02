@@ -46,7 +46,9 @@ const getStepContent = (step, formValue, setFormValue) => {
 export const Form = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
-  const [formValue, setFormValue] = useState({});
+  const [formValue, setFormValue] = useState({
+    expDate: "2025-01-01"
+  });
   const managerStore = useContext(SCManagerContext);
   const store = useContext(StoreContext);
 

@@ -36,9 +36,10 @@ export const PaymentDetails = ({ formValue, setFormValue }) => {
             id="expDate"
             label="Expiry date"
             fullWidth
+            type="date"
             name="expDate"
             onChange={setFormValue}
-            value={formValue.expDate || ""}
+            value={formValue.expDate}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
