@@ -13,9 +13,13 @@ class SC {
     this.deliveryCost = deliveryCost;
   }
 
-  setWithDelivery(withDelivery) {
+  setWithDelivery = withDelivery => {
     this.withDelivery = withDelivery;
-  }
+  };
+
+  toggleWithDelivery = () => {
+    this.withDelivery = !this.withDelivery;
+  };
 
   get totalPrice() {
     // get total price of cart in usd without delivery
@@ -39,6 +43,7 @@ export default decorate(SC, {
   currency: observable,
 
   setWithDelivery: action,
+  toggleWithDelivery: action,
 
   totalPrice: computed,
   totalPriceWithCurrency: computed

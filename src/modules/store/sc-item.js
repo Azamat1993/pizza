@@ -14,15 +14,15 @@ class SCItem {
     this.currency = currency;
   }
 
-  incrementQuantity() {
+  incrementQuantity = () => {
     this.quantity++;
-  }
+  };
 
-  decrementQuantity() {
+  decrementQuantity = () => {
     if (this.quantity > minQuantity) {
       this.quantity--;
     }
-  }
+  };
 
   get totalPrice() {
     return this.quantity * this.price * this.currency.current.factor;

@@ -6,7 +6,8 @@ import {
   Grid,
   FormControlLabel,
   Radio,
-  RadioGroup
+  RadioGroup,
+  Switch
 } from "@material-ui/core";
 import { useObserver } from "mobx-react";
 
@@ -18,14 +19,13 @@ export const Overview = () => {
 
   const handleCurrencyChange = e => store.currency.setCurrent(e.target.value);
 
-  console.log(store.currency.current);
-
   return useObserver(() =>
     <React.Fragment>
-      <Grid container wrap="nowrap" alignItems="center" justify="space-between">
-        <Typography variant="h6" gutterBottom>
-          Order overview
-        </Typography>
+      <Typography variant="h6" gutterBottom>
+        Order overview
+      </Typography>
+      <ListItem>
+        <ListItemText primary="Select Currency" />
         <RadioGroup
           aria-label="position"
           name="position"
@@ -46,7 +46,16 @@ export const Overview = () => {
             labelPlacement="end"
           />
         </RadioGroup>
-      </Grid>
+      </ListItem>
+      <ListItem>
+        <ListItemText primary="With delivery" />
+        <Switch
+          checked={store.withDelivery}
+          onChange={store.toggleWithDelivery}
+          color="primary"
+          inputProps={{ "aria-label": "primary checkbox" }}
+        />
+      </ListItem>
       <List />
       <ListItem>
         <ListItemText primary="Total" />

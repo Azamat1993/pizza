@@ -19,11 +19,11 @@ const currencyInfo = {
 class Currency {
   current = currencyInfo[defaultCurrency];
 
-  setCurrent(currency = defaultCurrency) {
+  setCurrent = (currency = defaultCurrency) => {
     if (currencyInfo[currency]) {
       this.current = currencyInfo[currency];
     }
-  }
+  };
 }
 
 export default decorate(Currency, {
