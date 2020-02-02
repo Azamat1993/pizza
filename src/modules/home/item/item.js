@@ -32,7 +32,7 @@ export const Item = ({ item }) => {
 
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
+        image={item.imageUrl}
         title="Paella dish"
       />
 
