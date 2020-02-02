@@ -1,15 +1,20 @@
 import { decorate, observable, action, computed } from "mobx";
 
 class SCManager {
-  open = false;
+  isOpen = false;
 
-  toggleIsOpen = () => {
-    this.open = !this.open;
+  close = () => {
+    this.isOpen = false;
+  };
+
+  open = () => {
+    this.isOpen = true;
   };
 }
 
 export default decorate(SCManager, {
-  open: observable,
+  isOpen: observable,
 
-  toggleIsOpen: action
+  open: action,
+  close: action
 });

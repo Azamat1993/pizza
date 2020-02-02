@@ -15,15 +15,15 @@ export const Modal = () => {
       aria-labelledby="transition-modal-title"
       aria-describedby="transition-modal-description"
       className={classes.modal}
-      open={managerStore.open}
-      onClose={managerStore.toggleIsOpen}
+      open={managerStore.isOpen}
+      onClose={managerStore.close}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{
         timeout: 500
       }}
     >
-      <Fade in={managerStore.open}>
+      <Fade in={managerStore.isOpen}>
         <Form />
       </Fade>
     </MuiModal>

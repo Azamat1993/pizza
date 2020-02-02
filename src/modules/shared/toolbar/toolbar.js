@@ -17,15 +17,13 @@ export const Toolbar = () => {
   const store = useContext(StoreContext);
   const managerStore = useContext(SCManagerContext);
 
-  const onClickCart = () => managerStore.toggleIsOpen();
-
   return useObserver(() =>
     <MuiToolbar>
       <Typography className={classes.title} variant="h6">
         Pizza shop
       </Typography>
       <IconButton
-        onClick={onClickCart}
+        onClick={managerStore.open}
         aria-label={`show ${store.list.items.length} shopping cart items`}
         color="inherit"
       >

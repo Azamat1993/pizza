@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-
-import { useStyles } from "./style";
+import React, { useState, useContext } from "react";
 import {
   Paper,
   Typography,
@@ -10,9 +8,12 @@ import {
   Button,
   Grid
 } from "@material-ui/core";
+
 import { Overview } from "modules/cart/overview";
 import { Address } from "modules/cart/address";
 import { PaymentDetails } from "modules/cart/payment-details";
+import { SCManagerContext } from "modules/context/sc-manager-context";
+import { useStyles } from "./style";
 
 const steps = ["Review your order", "Shipping address", "Payment details"];
 
@@ -32,6 +33,7 @@ const getStepContent = step => {
 export const Form = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
+  const managerStore = useContext(SCManagerContext);
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -64,7 +66,7 @@ export const Form = () => {
             wrap="nowrap"
             justify="space-between"
           >
-            <Button>Close</Button>
+            <Button onClick={managerStore.close}>Close</Button>
 
             <Grid item container justify="flex-end">
               {activeStep !== 0 &&
