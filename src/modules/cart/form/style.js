@@ -25,5 +25,13 @@ export const useStyles = makeStyles(theme => ({
   },
   button: {
     marginLeft: theme.spacing(1)
+  },
+  empty: {
+    width: 300,
+    height: 200,
+    margin: "auto"
+  },
+  emptyText: {
+    textAlign: "center"
   }
 }));
