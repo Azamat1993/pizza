@@ -14,6 +14,10 @@ export const Summary = ({ formValue }) => {
   const store = useContext(StoreContext);
   const classes = useStyles();
 
+  const formValues = Object.values(formValue);
+
+  console.log(formValues);
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -46,62 +50,14 @@ export const Summary = ({ formValue }) => {
         {store.withShipping &&
           <Grid item xs={12} sm={6}>
             <Typography variant="h6" gutterBottom className={classes.title}>
-              Shipping
-            </Typography>
-            <Typography gutterBottom>John Smith</Typography>
-            <Typography gutterBottom>
-              {[].join(", ")}
+              Shipping details
             </Typography>
           </Grid>}
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom className={classes.title}>
             Payment details
           </Typography>
-          <List>
-            <ListItem disableGutters>
-              <ListItemText primary="Name on card" />
-              <Typography variant="body2">
-                {formValue.cardName}
-              </Typography>
-            </ListItem>
-
-            <ListItem disableGutters>
-              <ListItemText primary="Card number" />
-              <Typography variant="body2">
-                {formValue.cardNumber}
-              </Typography>
-            </ListItem>
-
-            <ListItem disableGutters>
-              <ListItemText primary="Expiry date" />
-              <Typography variant="body2">
-                {formValue.expDate}
-              </Typography>
-            </ListItem>
-
-            <ListItem disableGutters>
-              <ListItemText primary="CVV" />
-              <Typography variant="body2">
-                {formValue.cvv}
-              </Typography>
-            </ListItem>
-          </List>
-          <Grid container>
-            {[].map(payment =>
-              <React.Fragment key={payment.name}>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>
-                    {payment.name}
-                  </Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>
-                    {payment.detail}
-                  </Typography>
-                </Grid>
-              </React.Fragment>
-            )}
-          </Grid>
+          <List />
         </Grid>
       </Grid>
     </React.Fragment>

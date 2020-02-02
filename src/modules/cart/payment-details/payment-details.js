@@ -1,6 +1,27 @@
 import React from "react";
 import { Typography, Grid, TextField } from "@material-ui/core";
 
+export const fieldsInfo = [
+  {
+    name: "cardName",
+    label: "Name on card"
+  },
+  {
+    name: "cardNumber",
+    label: "Card number"
+  },
+  {
+    name: "expDate",
+    label: "Expiry date",
+    type: "date"
+  },
+  {
+    name: "cvv",
+    label: "CVV",
+    helperText: "Last three digits on signature strip"
+  }
+];
+
 export const PaymentDetails = ({ formValue, setFormValue }) => {
   return (
     <React.Fragment>
@@ -8,52 +29,20 @@ export const PaymentDetails = ({ formValue, setFormValue }) => {
         Payment method
       </Typography>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            name="cardName"
-            required
-            id="cardName"
-            label="Name on card"
-            fullWidth
-            onChange={setFormValue}
-            value={formValue.cardName || ""}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="cardNumber"
-            label="Card number"
-            fullWidth
-            name="cardNumber"
-            onChange={setFormValue}
-            value={formValue.cardNumber || ""}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="expDate"
-            label="Expiry date"
-            fullWidth
-            type="date"
-            name="expDate"
-            onChange={setFormValue}
-            value={formValue.expDate}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="cvv"
-            label="CVV"
-            helperText="Last three digits on signature strip"
-            fullWidth
-            name="cvv"
-            onChange={setFormValue}
-            value={formValue.cvv || ""}
-          />
-        </Grid>
+        {fieldsInfo.map(fieldInfo =>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              name={fieldInfo.name}
+              required
+              label={fieldInfo.label}
+              fullWidth
+              type={fieldInfo.type || "text"}
+              helperText={fieldInfo.helperText || ""}
+              onChange={setFormValue}
+              value={formValue[fieldInfo.name] || ""}
+            />
+          </Grid>
+        )}
       </Grid>
     </React.Fragment>
   );
