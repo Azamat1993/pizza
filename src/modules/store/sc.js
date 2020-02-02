@@ -27,7 +27,7 @@ class SC {
 
     // adding delivery cost, if applied
     if (this.withDelivery) {
-      totalPrice += this.deliveryCost;
+      totalPrice += this.deliveryCost * this.currency.current.factor;
     }
 
     return totalPrice;
