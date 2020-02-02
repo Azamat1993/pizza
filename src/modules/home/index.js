@@ -8,22 +8,26 @@ const items = [
   {
     id: 1,
     title: "Margarita",
-    description: "This is margarita"
+    description: "This is margarita",
+    price: 12
   },
   {
     id: 2,
     title: "Second",
-    description: "This is second"
+    description: "This is second",
+    price: 4
   },
   {
     id: 3,
     title: "Second",
-    description: "This is second"
+    description: "This is second",
+    price: 56
   },
   {
     id: 4,
     title: "Margarita",
-    description: "This is margarita"
+    description: "This is margarita",
+    price: 6
   }
 ];
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Card,
   IconButton,
@@ -10,16 +10,20 @@ import {
 } from "@material-ui/core";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 
+import { StoreContext } from "modules/context/sc-context";
 import { useStyles } from "./style";
 
 export const Item = ({ item }) => {
   const classes = useStyles();
+  const store = useContext(StoreContext);
+
+  const onAdd = () => store.list.add(item);
 
   return (
     <Card className={classes.card}>
       <CardHeader
         action={
-          <IconButton aria-label="settings">
+          <IconButton onClick={onAdd} aria-label="settings">
             <AddShoppingCartIcon />
           </IconButton>
         }
