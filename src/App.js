@@ -18,7 +18,7 @@ const store = new SCStore([
   }
 ]);
 
-function App() {
+const App = () => {
   return (
     <StoreProvider value={store}>
       <AppBar position="static">
@@ -31,6 +31,6 @@ function App() {
       </Router>
     </StoreProvider>
   );
-}
+};
 
 export default App;
