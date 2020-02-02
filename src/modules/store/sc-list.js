@@ -6,8 +6,7 @@ class SCList {
 
   constructor(items, currency) {
     this.currency = currency;
-
-    items.forEach(this.add);
+    (items || []).forEach(this.add);
   }
 
   reset = () => {

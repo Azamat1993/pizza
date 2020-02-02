@@ -17,7 +17,8 @@ class Storage {
 
   setItem(key, value) {
     try {
-      localStorage(this.generateKey(key), this.serialize(value));
+      console.log("cellted");
+      localStorage.setItem(this.generateKey(key), this.serialize(value));
     } catch (e) {
       console.warn(
         `Error while setting item: ${value} with key: ${key} to storage`

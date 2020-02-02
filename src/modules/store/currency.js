@@ -17,7 +17,9 @@ const currencyInfo = {
 };
 
 class Currency {
-  current = currencyInfo[defaultCurrency];
+  constructor(current) {
+    this.current = current || currencyInfo[defaultCurrency];
+  }
 
   setCurrent = (currency = defaultCurrency) => {
     if (currencyInfo[currency]) {

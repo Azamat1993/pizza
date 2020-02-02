@@ -3,7 +3,8 @@ import {
   Toolbar as MuiToolbar,
   Typography,
   Badge,
-  IconButton
+  IconButton,
+  AppBar
 } from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { useObserver } from "mobx-react";
@@ -18,19 +19,21 @@ export const Toolbar = () => {
   const managerStore = useContext(SCManagerContext);
 
   return useObserver(() =>
-    <MuiToolbar>
-      <Typography className={classes.title} variant="h6">
-        Pizza shop
-      </Typography>
-      <IconButton
-        onClick={managerStore.open}
-        aria-label={`show ${store.list.items.length} shopping cart items`}
-        color="inherit"
-      >
-        <Badge badgeContent={store.list.items.length} color="secondary">
-          <ShoppingCartIcon />
-        </Badge>
-      </IconButton>
-    </MuiToolbar>
+    <AppBar position="static">
+      <MuiToolbar>
+        <Typography className={classes.title} variant="h6">
+          Pizza shop
+        </Typography>
+        <IconButton
+          onClick={managerStore.open}
+          aria-label={`show ${store.list.items.length} shopping cart items`}
+          color="inherit"
+        >
+          <Badge badgeContent={store.list.items.length} color="secondary">
+            <ShoppingCartIcon />
+          </Badge>
+        </IconButton>
+      </MuiToolbar>
+    </AppBar>
   );
 };

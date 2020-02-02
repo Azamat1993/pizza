@@ -1,16 +1,22 @@
-import { decorate, observable, action, computed } from "mobx";
+import { decorate, observable, action, computed, autorun, toJS } from "mobx";
 
+import { storage } from "modules/core/storage";
 import SCList from "./sc-list";
 import Currency from "./currency";
 
 class SC {
-  withShipping = false;
-
   constructor(items = [], shippingCost = 100) {
-    this.currency = new Currency();
+    const storedStore = storage.getItem("store") || {
+      current: {},
+      list: {}
+    };
 
-    this.list = new SCList(items, this.currency);
+    this.withShipping = storedStore.withShipping || false;
+    this.currency = new Currency(storedStore.currency.current);
+    this.list = new SCList(storedStore.list.items, this.currency);
     this.shippingCost = shippingCost;
+
+    autorun(() => storage.setItem("store", toJS(this)), { delay: 1000 });
   }
 
   setWithShipping = withShipping => {
