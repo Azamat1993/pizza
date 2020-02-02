@@ -16,6 +16,7 @@ import { Overview } from "modules/cart/overview";
 import { Address } from "modules/cart/address";
 import { PaymentDetails } from "modules/cart/payment-details";
 import { Summary } from "modules/cart/summary";
+import { Empty } from "modules/cart/empty";
 import { SCManagerContext } from "modules/context/sc-manager-context";
 import { StoreContext } from "modules/context/sc-context";
 import { useStyles } from "./style";
@@ -63,26 +64,17 @@ export const Form = () => {
   const getMainContent = () => {
     if (!store.list.items.length > 0) {
       return (
-        <Grid
-          container
-          justify="center"
-          className={classes.empty}
-          alignItems="center"
+        <Empty
+          content={`Looks like you have nothing in your cart. To proceed, please add items from catalogue`}
         >
-          <Grid container justify="center">
-            <IconButton
-              onClick={managerStore.close}
-              edge="end"
-              aria-label="delete"
-            >
-              <AddIcon />
-            </IconButton>
-            <Typography className={classes.emptyText}>
-              Looks like you have nothing in your cart. To proceed, please add
-              items from catalogue
-            </Typography>
-          </Grid>
-        </Grid>
+          <IconButton
+            onClick={managerStore.close}
+            edge="end"
+            aria-label="delete"
+          >
+            <AddIcon />
+          </IconButton>
+        </Empty>
       );
     }
 
