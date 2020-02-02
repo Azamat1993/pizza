@@ -1,12 +1,37 @@
-import React from "react";
-import { Typography, Grid, TextField } from "@material-ui/core";
+import React, { useContext } from "react";
+import {
+  Typography,
+  Grid,
+  TextField,
+  ListItem,
+  ListItemText,
+  Switch
+} from "@material-ui/core";
+import { useObserver } from "mobx-react";
+
+import { StoreContext } from "modules/context/sc-context";
+import { useStyles } from "./style";
 
 export const Address = ({ formValue, setFormValue }) => {
-  return (
+  const store = useContext(StoreContext);
+  const classes = useStyles();
+
+  return useObserver(() =>
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <ListItem disableGutters divider>
+        <ListItemText primary="With delivery" />
+        <Switch
+          checked={store.withDelivery}
+          onChange={store.toggleWithDelivery}
+          color="primary"
+          inputProps={{ "aria-label": "primary checkbox" }}
+        />
+      </ListItem>
+
+      <Typography className={classes.title} variant="h6" gutterBottom>
         Shipping address
       </Typography>
+
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <TextField

@@ -6,8 +6,7 @@ import {
   Grid,
   FormControlLabel,
   Radio,
-  RadioGroup,
-  Switch
+  RadioGroup
 } from "@material-ui/core";
 import { useObserver } from "mobx-react";
 
@@ -46,15 +45,6 @@ export const Overview = () => {
             labelPlacement="end"
           />
         </RadioGroup>
-      </ListItem>
-      <ListItem>
-        <ListItemText primary="With delivery" />
-        <Switch
-          checked={store.withDelivery}
-          onChange={store.toggleWithDelivery}
-          color="primary"
-          inputProps={{ "aria-label": "primary checkbox" }}
-        />
       </ListItem>
       <List />
       <ListItem>

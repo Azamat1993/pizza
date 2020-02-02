@@ -20,7 +20,7 @@ import { SCManagerContext } from "modules/context/sc-manager-context";
 import { StoreContext } from "modules/context/sc-context";
 import { useStyles } from "./style";
 
-const steps = ["Overview", "Shipping address", "Payment details", "Summary"];
+const steps = ["Overview", "Shipping", "Payment details", "Summary"];
 
 const getStepContent = (step, formValue, setFormValue) => {
   switch (step) {

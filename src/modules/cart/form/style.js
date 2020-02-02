@@ -20,7 +20,7 @@ export const useStyles = makeStyles(theme => ({
     }
   },
   stepper: {
-    padding: theme.spacing(3, 0, 5)
+    padding: theme.spacing(3, 0, 3)
   },
   buttons: {
     marginTop: theme.spacing(3)
