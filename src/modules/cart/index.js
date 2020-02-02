@@ -1,14 +1,9 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
 
-import { Form } from "modules/cart/form";
+import { Modal } from "modules/cart/modal";
 
 const Root = () => {
-  return (
-    <Grid container direction="column">
-      <Form />
-    </Grid>
-  );
+  return <Modal />;
 };
 
 export default Root;

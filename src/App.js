@@ -7,6 +7,7 @@ import SCStore from "modules/store/sc";
 import { SCManagerProvider } from "modules/context/sc-manager-context";
 import { StoreProvider } from "modules/context/sc-context";
 import Home from "modules/home";
+import Cart from "modules/cart";
 import { Toolbar } from "modules/shared/toolbar";
 
 const store = new SCStore([
@@ -33,6 +34,7 @@ const App = () => {
             <Home />
           </Route>
         </Router>
+        <Cart />
       </SCManagerProvider>
     </StoreProvider>
   );
