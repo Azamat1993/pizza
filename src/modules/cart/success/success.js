@@ -8,7 +8,7 @@ import { Empty } from "modules/cart/empty";
 export const Success = () => {
   const store = useContext(StoreContext);
 
-  useEffect(store.reset, []);
+  useEffect(() => store.reset, []);
 
   return (
     <Empty content="Thank you for the order! Information about your order will be delivered to you soon.">
