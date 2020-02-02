@@ -8,15 +8,31 @@ import {
 } from "@material-ui/core";
 
 import { StoreContext } from "modules/context/sc-context";
+import { fieldsInfo as paymentFieldsInfo } from "modules/cart/payment-details";
+import { fieldsInfo as addressFieldsInfo } from "modules/cart/address";
 import { useStyles } from "./style";
 
 export const Summary = ({ formValue }) => {
   const store = useContext(StoreContext);
   const classes = useStyles();
 
-  const formValues = Object.values(formValue);
-
-  console.log(formValues);
+  const renderList = fields => {
+    return (
+      <List>
+        {fields.map(fieldInfo =>
+          <ListItem key={fieldInfo.name} disableGutters>
+            <ListItemText
+              primary={fieldInfo.label}
+              secondary={fieldInfo.helperText}
+            />
+            <Typography variant="body2">
+              {formValue[fieldInfo.name]}
+            </Typography>
+          </ListItem>
+        )}
+      </List>
+    );
+  };
 
   return (
     <React.Fragment>
@@ -52,12 +68,13 @@ export const Summary = ({ formValue }) => {
             <Typography variant="h6" gutterBottom className={classes.title}>
               Shipping details
             </Typography>
+            {renderList(addressFieldsInfo)}
           </Grid>}
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom className={classes.title}>
             Payment details
           </Typography>
-          <List />
+          {renderList(paymentFieldsInfo)}
         </Grid>
       </Grid>
     </React.Fragment>

@@ -10,42 +10,8 @@ import {
 import { useObserver } from "mobx-react";
 
 import { StoreContext } from "modules/context/sc-context";
+import { fieldsInfo } from "./fields-info";
 import { useStyles } from "./style";
-
-export const fielsInfo = [
-  {
-    name: "firstName",
-    label: "First name"
-  },
-  {
-    name: "lastName",
-    label: "Last name"
-  },
-  {
-    name: "address1",
-    label: "Address line 1"
-  },
-  {
-    name: "address2",
-    label: "Address line 2"
-  },
-  {
-    name: "city",
-    label: "City"
-  },
-  {
-    name: "state",
-    label: "State/Province/Region"
-  },
-  {
-    name: "zip",
-    label: "Zip / Postal code"
-  },
-  {
-    name: "country",
-    label: "Country"
-  }
-];
 
 export const Address = ({ formValue, setFormValue }) => {
   const store = useContext(StoreContext);
@@ -73,8 +39,8 @@ export const Address = ({ formValue, setFormValue }) => {
           </Typography>
 
           <Grid container spacing={3}>
-            {fielsInfo.map(fieldInfo =>
-              <Grid item xs={12} sm={6}>
+            {fieldsInfo.map(fieldInfo =>
+              <Grid key={fieldInfo.name} item xs={12} sm={6}>
                 <TextField
                   required
                   name={fieldInfo.name}

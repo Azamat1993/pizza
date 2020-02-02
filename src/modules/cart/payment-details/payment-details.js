@@ -1,26 +1,7 @@
 import React from "react";
 import { Typography, Grid, TextField } from "@material-ui/core";
 
-export const fieldsInfo = [
-  {
-    name: "cardName",
-    label: "Name on card"
-  },
-  {
-    name: "cardNumber",
-    label: "Card number"
-  },
-  {
-    name: "expDate",
-    label: "Expiry date",
-    type: "date"
-  },
-  {
-    name: "cvv",
-    label: "CVV",
-    helperText: "Last three digits on signature strip"
-  }
-];
+import { fieldsInfo } from "./fields-info";
 
 export const PaymentDetails = ({ formValue, setFormValue }) => {
   return (
@@ -30,7 +11,7 @@ export const PaymentDetails = ({ formValue, setFormValue }) => {
       </Typography>
       <Grid container spacing={3}>
         {fieldsInfo.map(fieldInfo =>
-          <Grid item xs={12} sm={6}>
+          <Grid key={fieldInfo.name} item xs={12} sm={6}>
             <TextField
               name={fieldInfo.name}
               required
