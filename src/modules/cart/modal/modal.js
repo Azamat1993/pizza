@@ -10,15 +10,13 @@ export const Modal = () => {
   const classes = useStyles();
   const managerStore = useContext(SCManagerContext);
 
-  const handleClose = () => managerStore.toggleIsOpen();
-
   return useObserver(() =>
     <MuiModal
       aria-labelledby="transition-modal-title"
       aria-describedby="transition-modal-description"
       className={classes.modal}
       open={managerStore.open}
-      onClose={handleClose}
+      onClose={managerStore.toggleIsOpen}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{
