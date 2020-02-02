@@ -5,11 +5,12 @@ const minQuantity = 1;
 class SCItem {
   quantity = minQuantity;
 
-  constructor({ id, title, description, price }, currency) {
+  constructor({ id, title, description, price, imageUrl }, currency) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.price = price;
+    this.imageUrl = imageUrl;
 
     this.currency = currency;
   }

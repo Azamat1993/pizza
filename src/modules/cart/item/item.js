@@ -13,14 +13,18 @@ import ImageIcon from "@material-ui/icons/Image";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useObserver } from "mobx-react";
 
+import { useStyles } from "./style";
+
 export const Item = memo(({ item, removeItem }) => {
+  const classes = useStyles();
+
   const onChangeQuantity = e => item.setQuantity(e.target.value);
 
   return useObserver(() =>
     <ListItem disableGutters>
       <ListItemAvatar>
         <Avatar>
-          <ImageIcon />
+          <img className={classes.img} src={item.imageUrl} />
         </Avatar>
       </ListItemAvatar>
       <ListItemText
