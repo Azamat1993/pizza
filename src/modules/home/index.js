@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-import { AppBar, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 import { List } from "modules/home/list";
-import { Toolbar } from "modules/home/toolbar";
 import { useStyles } from "modules/home/style";
 
 const items = [
@@ -32,14 +31,9 @@ const Home = () => {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
-      <AppBar position="static">
-        <Toolbar />
-      </AppBar>
-      <Grid container className={classes.content}>
-        <List items={items} />
-      </Grid>
-    </React.Fragment>
+    <Grid container className={classes.content}>
+      <List items={items} />
+    </Grid>
   );
 };
 
