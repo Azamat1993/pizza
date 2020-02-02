@@ -15,11 +15,12 @@ import AddIcon from "@material-ui/icons/Add";
 import { Overview } from "modules/cart/overview";
 import { Address } from "modules/cart/address";
 import { PaymentDetails } from "modules/cart/payment-details";
+import { Summary } from "modules/cart/summary";
 import { SCManagerContext } from "modules/context/sc-manager-context";
 import { StoreContext } from "modules/context/sc-context";
 import { useStyles } from "./style";
 
-const steps = ["Review your order", "Shipping address", "Payment details"];
+const steps = ["Overview", "Shipping address", "Payment details", "Summary"];
 
 const getStepContent = (step, formValue, setFormValue) => {
   switch (step) {
@@ -31,6 +32,8 @@ const getStepContent = (step, formValue, setFormValue) => {
       return (
         <PaymentDetails formValue={formValue} setFormValue={setFormValue} />
       );
+    case 3:
+      return <Summary formValue={formValue} />;
     default:
       throw new Error("Unknown step");
   }
