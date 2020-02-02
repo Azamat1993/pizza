@@ -9,7 +9,13 @@ class SCList {
   }
 
   add = item => {
-    this.items.push(new SCItem(item));
+    let existingItem = this.items.find(eItem => eItem.id === item.id);
+
+    if (existingItem) {
+      existingItem.incrementQuantity();
+    } else {
+      this.items.push(new SCItem(item));
+    }
   };
 
   remove = item => {
