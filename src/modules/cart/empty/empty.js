@@ -3,7 +3,7 @@ import { Grid, Typography } from "@material-ui/core";
 
 import { useStyles } from "./style";
 
-export const Empty = ({ children }) => {
+export const Empty = ({ children, content }) => {
   const classes = useStyles();
   return (
     <Grid
@@ -15,8 +15,7 @@ export const Empty = ({ children }) => {
       <Grid container justify="center">
         {children}
         <Typography className={classes.emptyText}>
-          Looks like you have nothing in your cart. To proceed, please add items
-          from catalogue
+          {content}
         </Typography>
       </Grid>
     </Grid>

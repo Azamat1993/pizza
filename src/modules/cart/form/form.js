@@ -17,6 +17,7 @@ import { Address } from "modules/cart/address";
 import { PaymentDetails } from "modules/cart/payment-details";
 import { Summary } from "modules/cart/summary";
 import { Empty } from "modules/cart/empty";
+import { Success } from "modules/cart/success";
 import { SCManagerContext } from "modules/context/sc-manager-context";
 import { StoreContext } from "modules/context/sc-context";
 import { useStyles } from "./style";
@@ -35,6 +36,8 @@ const getStepContent = (step, formValue, setFormValue) => {
       );
     case 3:
       return <Summary formValue={formValue} />;
+    case 4:
+      return <Success />;
     default:
       throw new Error("Unknown step");
   }
@@ -108,6 +111,7 @@ export const Form = () => {
             <Button onClick={managerStore.close}>Close</Button>
 
             {store.list.items.length > 0 &&
+              activeStep < steps.length &&
               <Grid item container justify="flex-end">
                 {activeStep !== 0 &&
                   <Button onClick={handleBack} className={classes.button}>
