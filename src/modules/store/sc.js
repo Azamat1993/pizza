@@ -4,21 +4,21 @@ import SCList from "./sc-list";
 import Currency from "./currency";
 
 class SC {
-  withDelivery = false;
+  withShipping = false;
 
-  constructor(items = [], deliveryCost = 100) {
+  constructor(items = [], shippingCost = 100) {
     this.currency = new Currency();
 
     this.list = new SCList(items, this.currency);
-    this.deliveryCost = deliveryCost;
+    this.shippingCost = shippingCost;
   }
 
-  setWithDelivery = withDelivery => {
-    this.withDelivery = withDelivery;
+  setWithShipping = withShipping => {
+    this.withShipping = withShipping;
   };
 
-  toggleWithDelivery = () => {
-    this.withDelivery = !this.withDelivery;
+  toggleWithShipping = () => {
+    this.withShipping = !this.withShipping;
   };
 
   get totalPrice() {
@@ -26,8 +26,8 @@ class SC {
     let totalPrice = this.list.totalPrice;
 
     // adding delivery cost, if applied
-    if (this.withDelivery) {
-      totalPrice += this.deliveryCost * this.currency.current.factor;
+    if (this.withShipping) {
+      totalPrice += this.shippingCost * this.currency.current.factor;
     }
 
     return totalPrice;
@@ -36,15 +36,21 @@ class SC {
   get totalPriceWithCurrency() {
     return `${this.currency.current.symbol}${this.totalPrice.toFixed(2)}`;
   }
+
+  get shippingCostWithCurrency() {
+    const cost = this.currency.current.factor * this.shippingCost;
+    return `${this.currency.current.symbol}${cost}`;
+  }
 }
 
 export default decorate(SC, {
-  withDelivery: observable,
+  withShipping: observable,
   currency: observable,
 
-  setWithDelivery: action,
-  toggleWithDelivery: action,
+  setWithShipping: action,
+  toggleWithShipping: action,
 
   totalPrice: computed,
-  totalPriceWithCurrency: computed
+  totalPriceWithCurrency: computed,
+  shippingCostWithCurrency: computed
 });
