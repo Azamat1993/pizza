@@ -28,6 +28,13 @@ export const Summary = () => {
             </Typography>
           </ListItem>
         )}
+        {store.withShipping &&
+          <ListItem className={classes.listItem}>
+            <ListItemText primary="Shipping cost" />
+            <Typography variant="body2">
+              {store.shippingCostWithCurrency}
+            </Typography>
+          </ListItem>}
         <ListItem className={classes.listItem}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" className={classes.total}>
