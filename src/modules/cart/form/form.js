@@ -21,6 +21,7 @@ import { Success } from "modules/cart/success";
 import { SCManagerContext } from "modules/context/sc-manager-context";
 import { StoreContext } from "modules/context/sc-context";
 import { useStyles } from "./style";
+import { useStepper, useFormSetter } from "./form.service";
 
 const steps = ["Overview", "Shipping", "Payment details", "Summary"];
 
@@ -45,26 +46,10 @@ const getStepContent = (step, formValue, setFormValue) => {
 
 export const Form = () => {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = useState(0);
-  const [formValue, setFormValue] = useState({
-    expDate: "2025-01-01"
-  });
+  const [activeStep, handleNext, handleBack] = useStepper(0);
+  const [formValue, onSetFormValue] = useFormSetter({ expDate: "2025-01-01" });
   const managerStore = useContext(SCManagerContext);
   const store = useContext(StoreContext);
-
-  const handleNext = () => {
-    setActiveStep(activeStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
-
-  const onSetFormValue = e =>
-    setFormValue({
-      ...formValue,
-      [e.target.name]: e.target.value
-    });
 
   const getMainContent = () => {
     if (!store.list.items.length > 0) {
