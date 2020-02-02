@@ -13,7 +13,7 @@ import { useObserver } from "mobx-react";
 
 export const Item = memo(({ item, removeItem }) => {
   return useObserver(() =>
-    <ListItem>
+    <ListItem disableGutters>
       <ListItemAvatar>
         <Avatar>
           <ImageIcon />

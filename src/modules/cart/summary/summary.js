@@ -43,15 +43,16 @@ export const Summary = () => {
         </ListItem>
       </List>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
-          <Typography variant="h6" gutterBottom className={classes.title}>
-            Shipping
-          </Typography>
-          <Typography gutterBottom>John Smith</Typography>
-          <Typography gutterBottom>
-            {[].join(", ")}
-          </Typography>
-        </Grid>
+        {store.withShipping &&
+          <Grid item xs={12} sm={6}>
+            <Typography variant="h6" gutterBottom className={classes.title}>
+              Shipping
+            </Typography>
+            <Typography gutterBottom>John Smith</Typography>
+            <Typography gutterBottom>
+              {[].join(", ")}
+            </Typography>
+          </Grid>}
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom className={classes.title}>
             Payment details

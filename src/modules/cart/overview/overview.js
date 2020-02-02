@@ -23,7 +23,7 @@ export const Overview = () => {
       <Typography variant="h6" gutterBottom>
         Order overview
       </Typography>
-      <ListItem>
+      <ListItem disableGutters>
         <ListItemText primary="Select Currency" />
         <RadioGroup
           aria-label="position"
@@ -47,7 +47,7 @@ export const Overview = () => {
         </RadioGroup>
       </ListItem>
       <List />
-      <ListItem>
+      <ListItem disableGutters>
         <ListItemText primary="Total" />
         <Typography variant="subtitle1">
           {store.totalPriceWithCurrency}
