@@ -1,8 +1,17 @@
-import React from "react";
-import { AppBar, Toolbar, Typography, Grid } from "@material-ui/core";
+import React, { useContext } from "react";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Grid,
+  IconButton,
+  Badge
+} from "@material-ui/core";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 import { List } from "modules/home/list";
 import { useStyles } from "modules/home/style";
+import { StoreContext } from "modules/context/sc-context";
 
 const items = [
   {
@@ -29,12 +38,20 @@ const items = [
 
 const Home = () => {
   const classes = useStyles();
+  const store = useContext(StoreContext);
 
   return (
     <React.Fragment>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6">Pizza shop</Typography>
+          <Typography className={classes.title} variant="h6">
+            Pizza shop
+          </Typography>
+          <IconButton aria-label="show 4 new mails" color="inherit">
+            <Badge badgeContent={store.list.items.length} color="secondary">
+              <ShoppingCartIcon />
+            </Badge>
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Grid container className={classes.content}>

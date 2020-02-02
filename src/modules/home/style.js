@@ -6,5 +6,8 @@ export const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(3),
     marginLeft: "auto",
     marginRight: "auto"
+  },
+  title: {
+    flexGrow: 1
   }
 }));
