@@ -9,7 +9,7 @@ export const List = ({ items }) => {
     <Grid container spacing={3}>
       {items.map(item => {
         return (
-          <Grid xs={3} key={item.id} item>
+          <Grid xs={4} key={item.id} item>
             <Paper>
               <Item item={item} />
             </Paper>
