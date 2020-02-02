@@ -7,7 +7,7 @@ import Currency from "./currency";
 class SC {
   constructor(items = [], shippingCost = 100) {
     const storedStore = storage.getItem("store") || {
-      current: {},
+      currency: {},
       list: {}
     };
 
