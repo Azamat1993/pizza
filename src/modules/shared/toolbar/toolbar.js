@@ -9,13 +9,15 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { useObserver } from "mobx-react";
 
 import { StoreContext } from "modules/context/sc-context";
+import { SCManagerContext } from "modules/context/sc-manager-context";
 import { useStyles } from "./style";
 
 export const Toolbar = () => {
   const classes = useStyles();
   const store = useContext(StoreContext);
+  const managerStore = useContext(SCManagerContext);
 
-  const onClickCart = () => {};
+  const onClickCart = () => managerStore.toggleIsOpen();
 
   return useObserver(() =>
     <MuiToolbar>
